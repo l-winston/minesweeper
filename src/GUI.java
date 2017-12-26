@@ -8,6 +8,8 @@ import javax.swing.*;
 public class GUI {
 	static final int X = 1000;
 	static final int Y = 1000;
+	
+	static final double bombRate = 0.1;
 
 	static JFrame frame;
 	static BufferedImage image;
@@ -16,7 +18,7 @@ public class GUI {
 
 	static boolean running = true;
 	
-	static Tile[][] board = new Tile[10][10];
+	static Tile[][] board = new Tile[50][50];
 
 	public static void main(String[] args) throws IOException {
 		initFrame();
@@ -29,7 +31,7 @@ public class GUI {
 		Random rand = new Random();
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length; j++) {
-				board[i][j] = new Tile(i, j, rand.nextDouble() > 0.8);
+				board[i][j] = new Tile(i, j, rand.nextDouble() > (1-bombRate));
 				board[i][j].show(g2d);
 			}
 		}
@@ -53,11 +55,7 @@ public class GUI {
 		image = new BufferedImage(X, Y, BufferedImage.TYPE_INT_RGB);
 
 		g2d = image.createGraphics();
-		g2d.setColor(Color.white);
-		g2d.fillRect(0, 0, X, Y);
-		g2d.setColor(Color.black);
-		g2d.drawRect(0, 0, X, Y);
-
+		
 		frame.getContentPane().add(new JLabel(new ImageIcon(image)));
 		frame.pack();
 	}

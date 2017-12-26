@@ -21,6 +21,7 @@ public class Tile {
 	public void show(Graphics2D g2d) throws IOException {
 		BufferedImage img = ImageIO.read(new File("_.png"));
 		g2d.drawImage(img, x * j, y * i, x * j + x, y * i + y, 0, 0, 220, 220, Color.black, GUI.frame);
+		GUI.frame.repaint();
 	}
 
 	public void flip(Graphics2D g2d) throws IOException {
