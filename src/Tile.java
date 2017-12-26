@@ -126,9 +126,15 @@ public class Tile {
 
 	public void flag(Graphics2D g2d) throws IOException {
 		if(revealed)return;
+		BufferedImage img  = null;
 		
-		BufferedImage img = ImageIO.read(new File("flag.png"));
+		if(flagged)
+			img = ImageIO.read(new File("_.png"));
+		else
+			img = ImageIO.read(new File("flag.png"));
+		
 		g2d.drawImage(img, x * j, y * i, x * j + x, y * i + y, 0, 0, 210, 210, Color.black, GUI.frame);
 		GUI.frame.repaint();
+		flagged ^= true;
 	}
 }
