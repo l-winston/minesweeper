@@ -12,7 +12,13 @@ public class MyML implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		try {
-			GUI.click(e.getX(), e.getY());
+			if (e.getModifiers() == MouseEvent.BUTTON3_MASK) 
+		    {
+		        GUI.flag(e.getX(), e.getY());
+		        System.out.println("flag");
+		    }else{
+				GUI.click(e.getX(), e.getY());
+		    }
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

@@ -75,4 +75,8 @@ public class GUI {
 		frame.repaint();
 		g2d.dispose();
 	}
+
+	public static void flag(int x, int y) throws IOException {
+		board[y/(Y/board.length)][x/(X/board[0].length)].flag(g2d);			
+	}
 }

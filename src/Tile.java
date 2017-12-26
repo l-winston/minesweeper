@@ -7,13 +7,14 @@ import javax.imageio.ImageIO;
 
 public class Tile {
 	int i, j, value, x, y;
-	boolean isBomb, revealed;
+	boolean isBomb, revealed, flagged;
 
 	Tile(int i, int j, boolean isBomb) {
 		this.i = i;
 		this.j = j;
 		this.isBomb = isBomb;
 		this.revealed = false;
+		this.flagged = false;
 		this.x = GUI.X / GUI.board[0].length;
 		this.y = GUI.Y / GUI.board.length;
 	}
@@ -121,5 +122,13 @@ public class Tile {
 		} catch (ArrayIndexOutOfBoundsException e) {
 		}
 		value = count;
+	}
+
+	public void flag(Graphics2D g2d) throws IOException {
+		if(revealed)return;
+		
+		BufferedImage img = ImageIO.read(new File("flag.png"));
+		g2d.drawImage(img, x * j, y * i, x * j + x, y * i + y, 0, 0, 210, 210, Color.black, GUI.frame);
+		GUI.frame.repaint();
 	}
 }
