@@ -3,7 +3,11 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 
 public class MyML implements MouseListener{
-
+	public MineSweeper m;
+	public MyML(MineSweeper m){
+		this.m = m;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
@@ -14,10 +18,10 @@ public class MyML implements MouseListener{
 		try {
 			if (e.getModifiers() == MouseEvent.BUTTON3_MASK) 
 		    {
-		        GUI.flag(e.getX(), e.getY());
+		        m.flag(e.getX(), e.getY());
 		        System.out.println("flag");
 		    }else{
-				GUI.click(e.getX(), e.getY());
+				m.click(e.getX(), e.getY());
 		    }
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
