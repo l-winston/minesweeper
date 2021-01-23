@@ -1,2 +1,1 @@
 # minesweeper
-simple minseweeper game
